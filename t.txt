@@ -1,0 +1,45 @@
+import random
+import pygame
+import time
+import threading
+
+pygame.init()
+
+# ... (existing code)
+
+# Set up variables to track vehicle counts
+car_count = 0
+truck_count = 0
+bike_count = 0
+
+# Set up the pixel positions where the images will change
+pixel_positions = [255, 570, 870]  # Adjust these values as needed
+
+# Function to handle changing images based on car positions
+def handle_image_change(car_pos):
+    global stra2, full_light, mid_light
+
+    for i in range(len(pixel_positions)):
+        if car_pos > pixel_positions[i] and car_pos < pixel_positions[(i + 1) % len(pixel_positions)]:
+            # Logic to change images based on the position of the car
+            screen.blit(full_light, (pixel_positions[i], 80))
+            screen.blit(mid_light, (pixel_positions[(i + 1) % len(pixel_positions)], 80))
+            for j in range(len(pixel_positions)):
+                if j != i and j != (i + 1) % len(pixel_positions):
+                    screen.blit(stra2, (pixel_positions[j], 80))
+            break
+
+# ... (existing code)
+
+# Main game loop
+while run:
+    # ... (existing code)
+
+    for i in range(len(car_positions)):
+        car_position = car_positions[i]
+        car_position[0] += 1
+
+        # Check if the car is crossing specific pixels and update images accordingly
+        handle_image_change(car_position[0])
+
+        # Rest of your code...
