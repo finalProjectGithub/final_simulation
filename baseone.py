@@ -164,6 +164,6 @@ while run:
             run = False
 
 # Print the counts to the console after the simulation is closed
-print("Full light count: ", full_light_count)
-print("Mid light count: ", mid_light_count)
-print("Stra2 count: ", stra2_count)
+print("Full light intensity count: ", full_light_count)
+print("Mid light intensity count: ", mid_light_count)
+print("Zero light intensity count", stra2_count)
